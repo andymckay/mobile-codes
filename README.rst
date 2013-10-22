@@ -2,7 +2,7 @@ Contains the country codes from ISO 3166-1 based on the code based on:
 
 https://github.com/deactivated/python-iso3166/
 
-I then added in MCC codes based on the Wikipedia page:
+But also has the MCC codes based on the Wikipedia page:
 
 http://en.wikipedia.org/wiki/List_of_mobile_country_codes
 
@@ -37,5 +37,8 @@ Usage
 Changes
 =======
 
-0.1: From the original. Added in MCC codes and a lookup. Made completely lazy,
-  no records generated or indexed until first asked for.
+0.1: From the original.
+
+- Added in MCC codes and a lookup.
+
+- Made completely lazy, no records generated or indexed until first asked for.
