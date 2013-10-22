@@ -285,10 +285,8 @@ def _build_index_tuple(idx, records):
 def _get(var, method, idx, code):
     global _cache
     if 'records' not in _cache:
-        print 'building records'
         _cache['records'] = _records()
     if var not in _cache:
-        print 'building cache'
         _cache[var] = method(idx, _cache['records'])
     return _cache[var][code]
 
