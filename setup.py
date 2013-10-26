@@ -3,8 +3,8 @@ from setuptools import setup
 
 setup(
     name='mobile-codes',
-    version='0.1.1',
-    description='Library of ISO 3166 and MCC codes',
+    version='0.2.1',
+    description='Library of ISO 3166, MCC and MNC codes',
     long_description=open('README.rst').read(),
     author='Andy McKay',
     author_email='andym@mozilla.com',
