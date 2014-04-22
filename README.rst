@@ -69,6 +69,8 @@ If you want to do development on the library, follow these steps:
 Changes
 =======
 
+0.2.2: Some tests, docs changes and updates to the records, thanks hannosch.
+
 0.2: Added in MNC codes and a script to scrape them.
 
 0.1: From the original.
@@ -76,3 +78,8 @@ Changes
 - Added in MCC codes and a lookup.
 
 - Made completely lazy, no records generated or indexed until first asked for.
+
+Contributors
+============
+
+* hannosch
