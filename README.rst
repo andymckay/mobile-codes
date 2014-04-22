@@ -46,7 +46,7 @@ Lookup by name, alpha2, alpha3 (all case insensitive)::
 
 Lookup operators by mcc (returns a list of all operators)::
 
-    >>> mobile_codes.operators('322')
+    >>> mobile_codes.operators('302')
     [Operator(mcc='302', mnc='220', brand='Telus', operator=u'Telus'),
      Operator(mcc='302', mnc='221', brand='Telus', operator=u'Telus'),...
 
@@ -56,6 +56,15 @@ Lookup operator by mcc and Mobile Network Code (MNC)::
     Operator(mcc='722', mnc='070', brand='Movistar', operator=u'Movistar')
 
 All lookups raise a KeyError if the requested value is not found.
+
+Development
+===========
+
+If you want to do development on the library, follow these steps:
+
+* Create a virtualenv
+* bin/pip install -r requirements/tests.txt
+* bin/nosetests -s mobile_codes
 
 Changes
 =======
