@@ -52,7 +52,7 @@ def _countries():
         Country(u"Cambodia", "KH", "KHM", "116", "456"),
         Country(u"Cameroon", "CM", "CMR", "120", "624"),
         Country(u"Canada", "CA", "CAN", "124", "302"),
-        Country(u"Cape Verde", "CV", "CPV", "132", "625"),
+        Country(u"Cabo Verde", "CV", "CPV", "132", "625"),
         Country(u"Cayman Islands", "KY", "CYM", "136", "346"),
         Country(u"Central African Republic", "CF", "CAF", "140", "623"),
         Country(u"Chad", "TD", "TCD", "148", "622"),
