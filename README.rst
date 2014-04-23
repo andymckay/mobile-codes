@@ -29,11 +29,12 @@ Usage
 Lookup by Mobile Country Code (MCC)::
 
     >>> mobile_codes.mcc("648")
-    Country(name=u'Zimbabwe', alpha2='ZW', alpha3='ZWE', numeric='716', mcc='648')
-    >>> mobile_codes.mcc("310")
-    Country(name=u'United States', alpha2='US', alpha3='USA', numeric='840', mcc=('310', '311', '313', '316'))
+    [Country(name=u'Zimbabwe', alpha2='ZW', alpha3='ZWE', numeric='716', mcc='648')]
+    >>> mobile_codes.mcc("311")
+    [Country(name=u'Guam', alpha2='GU', alpha3='GUM', numeric='316', mcc=('310', '311')),
+     Country(name=u'United States', alpha2='US', alpha3='USA', numeric='840', mcc=('310', '311', '313', '316'))]
     >>> mobile_codes.mcc("313")
-    Country(name=u'United States', alpha2='US', alpha3='USA', numeric='840', mcc=('310', '311', '313', '316'))
+    [Country(name=u'United States', alpha2='US', alpha3='USA', numeric='840', mcc=('310', '311', '313', '316'))]
 
 Lookup by name, alpha2, alpha3 (all case insensitive)::
 
@@ -68,6 +69,9 @@ If you want to do development on the library, follow these steps:
 
 Changes
 =======
+
+0.3: Changed mcc API to always return a list, possibly empty, possibly
+     containing multiple countries.
 
 0.2.2: Some tests, docs changes and updates to the records, thanks hannosch.
 
