@@ -6,17 +6,28 @@ import mobile_codes
 class TestCountries(TestCase):
 
     def test_mcc(self):
-        country = mobile_codes.mcc('302')
-        self.assertEqual(country.mcc, '302')
+        countries = mobile_codes.mcc('302')
+        self.assertEqual(len(countries), 1)
+        self.assertEqual(countries[0].mcc, '302')
 
-    def test_mcc_multiple(self):
-        country = mobile_codes.mcc('310')
-        self.assertEqual(country.mcc, ('310', '311', '313', '316'))
-        country = mobile_codes.mcc('313')
-        self.assertEqual(country.mcc, ('310', '311', '313', '316'))
+    def test_mcc_multiple_codes(self):
+        countries = mobile_codes.mcc('313')
+        self.assertEqual(len(countries), 1)
+        self.assertEqual(countries[0].mcc, ('310', '311', '313', '316'))
+
+        # We even get multiple countries with multiple MCC each
+        countries = mobile_codes.mcc('310')
+        self.assertTrue(len(countries) > 1)
+        for country in countries:
+            self.assertTrue(len(country.mcc) > 1)
+
+    def test_mcc_multiple_countries(self):
+        countries = mobile_codes.mcc('505')
+        self.assertEqual(len(countries), 2)
 
     def test_mcc_fail(self):
-        self.assertRaises(KeyError, mobile_codes.mcc, '000')
+        countries = mobile_codes.mcc('000')
+        self.assertEqual(len(countries), 0)
 
     def test_alpha2(self):
         country = mobile_codes.alpha2('CA')

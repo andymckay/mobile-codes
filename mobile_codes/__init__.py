@@ -2049,14 +2049,15 @@ def _build_index(idx, records):
 
 def _build_index_tuple(idx, records):
     # There can be multiple MCC codes per country
-    result = {}
+    # and there can be multiple countries for one MCC code
+    result = defaultdict(list)
     for r in records:
         if isinstance(r[idx], tuple):
             for k in r[idx]:
                 if k:
-                    result[k.upper()] = r
+                    result[k.upper()].append(r)
         elif r[idx]:
-            result[r[idx].upper()] = r
+            result[r[idx].upper()].append(r)
     return result
 
 
