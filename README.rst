@@ -70,14 +70,24 @@ If you want to do development on the library, follow these steps:
 Changes
 =======
 
-0.3: Changed mcc API to always return a list, possibly empty, possibly
-     containing multiple countries.
+0.3
+---
 
-0.2.2: Some tests, docs changes and updates to the records, thanks hannosch.
+- Changed mcc API to always return a list, possibly empty, possibly
+  containing multiple countries.
 
-0.2: Added in MNC codes and a script to scrape them.
+0.2.2
+-----
 
-0.1: From the original.
+- Some tests, docs changes and updates to the records, thanks hannosch.
+
+0.2
+---
+
+- Added in MNC codes and a script to scrape them.
+
+0.1
+---
 
 - Added in MCC codes and a lookup.
 
