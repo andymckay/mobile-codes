@@ -4,6 +4,7 @@ Changes
 0.4 - unreleased
 ----------------
 
+- Declare compatibility with Python 3.4.
 - Fix a number of country to mcc mappings.
 - Issue #9: Fix typo in mcc for Yemen.
 - Issue #10: Allow 310 as a mcc value for Puerto Rico.
