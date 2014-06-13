@@ -1,7 +1,7 @@
 Changes
 =======
 
-0.4 - unreleased
+0.4 - 2014-06-13
 ----------------
 
 - Declare compatibility with Python 3.4.
