@@ -70,6 +70,11 @@ If you want to do development on the library, follow these steps:
 Changes
 =======
 
+0.4
+---
+
+- Issue #9: Fix typo in mcc for Yemen.
+
 0.3
 ---
 

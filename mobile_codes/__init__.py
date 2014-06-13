@@ -260,7 +260,7 @@ def _countries():
         Country(u"Virgin Islands, U.S.", "VI", "VIR", "850", None),
         Country(u"Wallis and Futuna", "WF", "WLF", "876", None),
         Country(u"Western Sahara", "EH", "ESH", "732", None),
-        Country(u"Yemen", "YE", "YEM", "887", "412"),
+        Country(u"Yemen", "YE", "YEM", "887", "421"),
         Country(u"Zambia", "ZM", "ZMB", "894", "645"),
         Country(u"Zimbabwe", "ZW", "ZWE", "716", "648")
     ]
