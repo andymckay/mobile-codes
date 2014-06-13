@@ -190,7 +190,7 @@ def _countries():
         Country(u"Pitcairn", "PN", "PCN", "612", None),
         Country(u"Poland", "PL", "POL", "616", "260"),
         Country(u"Portugal", "PT", "PRT", "620", "268"),
-        Country(u"Puerto Rico", "PR", "PRI", "630", "330"),
+        Country(u"Puerto Rico", "PR", "PRI", "630", ("310", "330")),
         Country(u"Qatar", "QA", "QAT", "634", "427"),
         Country(u"Réunion", "RE", "REU", "638", "647"),
         Country(u"Romania", "RO", "ROU", "642", "226"),

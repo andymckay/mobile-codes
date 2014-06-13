@@ -70,6 +70,11 @@ If you want to do development on the library, follow these steps:
 Changes
 =======
 
+0.4
+---
+
+- Issue #10: Allow 310 as a mcc value for Puerto Rico.
+
 0.3
 ---
 
