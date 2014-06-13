@@ -77,6 +77,17 @@ class TestCountriesNoMCC(TestCase):
         self.assertEqual(country.mcc, None)
 
 
+class TestCountriesSpecialCases(TestCase):
+
+    def test_puerto_rico(self):
+        # Allow mainland US 310 as a valid code for Puerto Rico.
+        # At least AT&T has cell networks with a mcc of 310 installed
+        # in Puerto Rico, see
+        # https://github.com/andymckay/mobile-codes/issues/10
+        country = mobile_codes.alpha2('PR')
+        self.assertEqual(country.mcc, ("310", "330"))
+
+
 class TestOperators(TestCase):
 
     def test_mcc(self):
