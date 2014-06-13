@@ -57,6 +57,34 @@ class TestCountries(TestCase):
     def test_numeric_fail(self):
         self.assertRaises(KeyError, mobile_codes.numeric, '000')
 
+    def test_countries_match_operators(self):
+        operators = mobile_codes._operators()
+        operator_mccs = set([o.mcc for o in operators])
+        # exclude test / worldwide mcc values
+        operator_mccs -= set(['001', '901'])
+        # exclude:
+        # 312 - Northern Michigan University
+        operator_mccs -= set(['312'])
+
+        countries = mobile_codes._countries()
+        countries_mccs = []
+        for country in countries:
+            mcc = country.mcc
+            if not mcc:
+                continue
+            elif isinstance(mcc, str):
+                countries_mccs.append(mcc)
+            else:
+                countries_mccs.extend(list(mcc))
+
+        countries_mccs = set(countries_mccs)
+
+        # No country should have a mcc value, without an operator
+        self.assertEqual(countries_mccs - operator_mccs, set())
+
+        # No operator should have a mcc value, without a matching country
+        self.assertEqual(operator_mccs - countries_mccs, set())
+
 
 class TestCountriesNoMCC(TestCase):
 
