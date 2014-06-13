@@ -1,0 +1,32 @@
+Changes
+=======
+
+0.4
+---
+
+- Fix a number of country to mcc mappings.
+- Issue #9: Fix typo in mcc for Yemen.
+- Issue #10: Allow 310 as a mcc value for Puerto Rico.
+
+0.3
+---
+
+- Changed mcc API to always return a list, possibly empty, possibly
+  containing multiple countries.
+
+0.2.2
+-----
+
+- Some tests, docs changes and updates to the records, thanks hannosch.
+
+0.2
+---
+
+- Added in MNC codes and a script to scrape them.
+
+0.1
+---
+
+- Added in MCC codes and a lookup.
+
+- Made completely lazy, no records generated or indexed until first asked for.

@@ -1,11 +1,13 @@
 from setuptools import setup
 
+long_description = (open('README.rst').read() + '\n' +
+                    open('CHANGES.rst').read())
 
 setup(
     name='mobile-codes',
     version='0.3',
     description='Library of ISO 3166, MCC and MNC codes',
-    long_description=open('README.rst').read(),
+    long_description=long_description,
     author='Andy McKay',
     author_email='andym@mozilla.com',
     license='BSD',
