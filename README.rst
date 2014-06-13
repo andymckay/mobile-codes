@@ -73,6 +73,7 @@ Changes
 0.4
 ---
 
+- Fix a number of country to mcc mappings.
 - Issue #9: Fix typo in mcc for Yemen.
 
 0.3
