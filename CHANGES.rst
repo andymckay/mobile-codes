@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.6 - 2014-10-14
+----------------
+
+- Move network and country constants into JSON files
+
 0.5 - unreleased
 ----------------
 
