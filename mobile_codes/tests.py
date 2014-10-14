@@ -6,65 +6,65 @@ import mobile_codes
 class TestCountries(TestCase):
 
     def test_mcc(self):
-        countries = mobile_codes.mcc('302')
+        countries = mobile_codes.mcc(u'302')
         self.assertEqual(len(countries), 1)
-        self.assertEqual(countries[0].mcc, '302')
+        self.assertEqual(countries[0].mcc, u'302')
 
     def test_mcc_multiple_codes(self):
-        countries = mobile_codes.mcc('313')
+        countries = mobile_codes.mcc(u'313')
         self.assertEqual(len(countries), 1)
-        self.assertEqual(countries[0].mcc, ('310', '311', '313', '316'))
+        self.assertEqual(countries[0].mcc, [u'310', u'311', u'313', u'316'])
 
         # We even get multiple countries with multiple MCC each
-        countries = mobile_codes.mcc('310')
+        countries = mobile_codes.mcc(u'310')
         self.assertTrue(len(countries) > 1)
         for country in countries:
             self.assertTrue(len(country.mcc) > 1)
 
     def test_mcc_multiple_countries(self):
-        countries = mobile_codes.mcc('505')
+        countries = mobile_codes.mcc(u'505')
         self.assertEqual(len(countries), 2)
 
     def test_mcc_fail(self):
-        countries = mobile_codes.mcc('000')
+        countries = mobile_codes.mcc(u'000')
         self.assertEqual(len(countries), 0)
 
     def test_alpha2(self):
-        country = mobile_codes.alpha2('CA')
-        self.assertEqual(country.alpha2, 'CA')
+        country = mobile_codes.alpha2(u'CA')
+        self.assertEqual(country.alpha2, u'CA')
 
     def test_alpha2_fail(self):
-        self.assertRaises(KeyError, mobile_codes.alpha2, 'XX')
+        self.assertRaises(KeyError, mobile_codes.alpha2, u'XX')
 
     def test_alpha3(self):
-        country = mobile_codes.alpha3('CAN')
-        self.assertEqual(country.alpha3, 'CAN')
+        country = mobile_codes.alpha3(u'CAN')
+        self.assertEqual(country.alpha3, u'CAN')
 
     def test_alpha3_fail(self):
-        self.assertRaises(KeyError, mobile_codes.alpha3, 'XYZ')
+        self.assertRaises(KeyError, mobile_codes.alpha3, u'XYZ')
 
     def test_name(self):
-        country = mobile_codes.name('canada')
-        self.assertEqual(country.name, 'Canada')
+        country = mobile_codes.name(u'canada')
+        self.assertEqual(country.name, u'Canada')
 
     def test_name_fail(self):
-        self.assertRaises(KeyError, mobile_codes.name, 'Neverland')
+        self.assertRaises(KeyError, mobile_codes.name, u'Neverland')
 
     def test_numeric(self):
-        country = mobile_codes.numeric('124')
-        self.assertEqual(country.numeric, '124')
+        country = mobile_codes.numeric(u'124')
+        self.assertEqual(country.numeric, u'124')
 
     def test_numeric_fail(self):
-        self.assertRaises(KeyError, mobile_codes.numeric, '000')
+        self.assertRaises(KeyError, mobile_codes.numeric, u'000')
 
     def test_countries_match_operators(self):
         operators = mobile_codes._operators()
         operator_mccs = set([o.mcc for o in operators])
         # exclude test / worldwide mcc values
-        operator_mccs -= set(['001', '901'])
+        operator_mccs -= set([u'001', u'901'])
         # exclude:
         # 312 - Northern Michigan University
-        operator_mccs -= set(['312'])
+        operator_mccs -= set([u'312'])
 
         countries = mobile_codes._countries()
         countries_mccs = []
@@ -72,10 +72,10 @@ class TestCountries(TestCase):
             mcc = country.mcc
             if not mcc:
                 continue
-            elif isinstance(mcc, str):
-                countries_mccs.append(mcc)
-            else:
+            elif isinstance(mcc, list):
                 countries_mccs.extend(list(mcc))
+            else:
+                countries_mccs.append(mcc)
 
         countries_mccs = set(countries_mccs)
 
@@ -89,19 +89,19 @@ class TestCountries(TestCase):
 class TestCountriesNoMCC(TestCase):
 
     def test_alpha2(self):
-        country = mobile_codes.alpha2('AQ')
+        country = mobile_codes.alpha2(u'AQ')
         self.assertEqual(country.mcc, None)
 
     def test_alpha3(self):
-        country = mobile_codes.alpha3('ATA')
+        country = mobile_codes.alpha3(u'ATA')
         self.assertEqual(country.mcc, None)
 
     def test_name(self):
-        country = mobile_codes.name('antarctica')
+        country = mobile_codes.name(u'antarctica')
         self.assertEqual(country.mcc, None)
 
     def test_numeric(self):
-        country = mobile_codes.numeric('010')
+        country = mobile_codes.numeric(u'010')
         self.assertEqual(country.mcc, None)
 
 
@@ -112,25 +112,25 @@ class TestCountriesSpecialCases(TestCase):
         # At least AT&T has cell networks with a mcc of 310 installed
         # in Puerto Rico, see
         # https://github.com/andymckay/mobile-codes/issues/10
-        country = mobile_codes.alpha2('PR')
-        self.assertEqual(country.mcc, ("310", "330"))
+        country = mobile_codes.alpha2(u'PR')
+        self.assertEqual(country.mcc, [u'310', '330'])
 
 
 class TestOperators(TestCase):
 
     def test_mcc(self):
-        operators = mobile_codes.operators('302')
+        operators = mobile_codes.operators(u'302')
         mccs = set([o.mcc for o in operators])
-        self.assertEqual(mccs, set(['302']))
+        self.assertEqual(mccs, set([u'302']))
 
     def test_mcc_fail(self):
-        operators = mobile_codes.operators('000')
+        operators = mobile_codes.operators(u'000')
         self.assertEqual(len(operators), 0)
 
     def test_mcc_mnc(self):
-        operator = mobile_codes.mcc_mnc('722', '070')
-        self.assertEqual(operator.mcc, '722')
-        self.assertEqual(operator.mnc, '070')
+        operator = mobile_codes.mcc_mnc(u'722', '070')
+        self.assertEqual(operator.mcc, u'722')
+        self.assertEqual(operator.mnc, u'070')
 
     def test_mcc_mnc_fail(self):
-        self.assertRaises(KeyError, mobile_codes.mcc_mnc, '000', '001')
+        self.assertRaises(KeyError, mobile_codes.mcc_mnc, u'000', '001')

@@ -71,3 +71,4 @@ Contributors
 ============
 
 * Hanno Schlichting (hannosch)
+* Jared Kerim (jaredkerim)
