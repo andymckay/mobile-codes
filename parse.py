@@ -6,7 +6,7 @@ import os
 
 from BeautifulSoup import BeautifulSoup
 
-from mobile_codes import Operator
+from mobile_codes import MNCOperator
 
 
 def parse_wikipedia():
@@ -21,7 +21,7 @@ def parse_wikipedia():
                     continue
 
                 operators.append(
-                    Operator(
+                    MNCOperator(
                         operator=operator.text, brand=brand.text,
                         mcc=mcc.text, mnc=mnc.text))
 
@@ -30,13 +30,7 @@ def parse_wikipedia():
 
 def parse_itu():
     with open(os.path.join('source_data', 'itu.json'), 'rb') as jsonfile:
-        data = json.loads(jsonfile.read().decode())
-        operators = []
-
-        for line in data:
-            operators.append(Operator(*line))
-
-        return operators
+        return json.loads(jsonfile.read().decode())
 
 
 def merge_wiki_itu():

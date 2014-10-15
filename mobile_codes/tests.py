@@ -57,8 +57,8 @@ class TestCountries(TestCase):
     def test_numeric_fail(self):
         self.assertRaises(KeyError, mobile_codes.numeric, u'000')
 
-    def test_countries_match_operators(self):
-        operators = mobile_codes._operators()
+    def test_countries_match_mnc_operators(self):
+        operators = mobile_codes._mnc_operators()
         operator_mccs = set([o.mcc for o in operators])
         # exclude test / worldwide mcc values
         operator_mccs -= set([u'001', u'901'])
@@ -116,7 +116,7 @@ class TestCountriesSpecialCases(TestCase):
         self.assertEqual(country.mcc, [u'310', '330'])
 
 
-class TestOperators(TestCase):
+class TestMNCOperators(TestCase):
 
     def test_mcc(self):
         operators = mobile_codes.operators(u'302')
@@ -134,3 +134,15 @@ class TestOperators(TestCase):
 
     def test_mcc_mnc_fail(self):
         self.assertRaises(KeyError, mobile_codes.mcc_mnc, u'000', '001')
+
+
+class TestSIDOperators(TestCase):
+
+    def test_sid_operators(self):
+        operators = mobile_codes.sid_operators(u'1')
+        countries = set([operator.country for operator in operators])
+        self.assertEquals(countries, set(['United States of America']))
+
+    def test_sid_operators_fail(self):
+        operators = mobile_codes.operators(u'000')
+        self.assertEqual(len(operators), 0)
