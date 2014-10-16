@@ -6,6 +6,10 @@ But also has the MCC and MNC codes based on the Wikipedia page:
 
 http://en.wikipedia.org/wiki/List_of_mobile_country_codes
 
+As well as the latest released listing from ITU:
+
+http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.212B-2014-PDF-E.pdf
+
 Note that MCC codes for a country can be:
 
 * None (no MCC code)

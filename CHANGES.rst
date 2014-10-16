@@ -5,6 +5,7 @@ Changes
 ----------------
 
 - Move network and country constants into JSON files
+- Incorporate ITU data for operators
 
 0.5 - unreleased
 ----------------

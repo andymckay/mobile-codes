@@ -23,7 +23,7 @@ def _load_json(cache_key, json_path, wrapper):
     global _CACHE
     if cache_key not in _CACHE:
         with open(json_path, 'rb') as json_file:
-            data = json.loads(json_file.read())
+            data = json.loads(json_file.read().decode())
             _CACHE[cache_key] = [
                 wrapper(*line) for line in data]
     return _CACHE[cache_key]
