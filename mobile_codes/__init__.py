@@ -9,12 +9,19 @@ __all__ = ["countries"]
 
 FILE_PATH = os.path.realpath(os.path.dirname(__file__))
 COUNTRY_JSON_PATH = os.path.join(FILE_PATH, 'json', 'countries.json')
-OPERATOR_JSON_PATH = os.path.join(FILE_PATH, 'json', 'operators.json')
+MNC_OPERATOR_JSON_PATH = os.path.join(FILE_PATH, 'json', 'mnc_operators.json')
+SID_OPERATOR_JSON_PATH = os.path.join(FILE_PATH, 'json', 'sid_operators.json')
+
 COUNTRY_FIELDS = ('name', 'alpha2', 'alpha3', 'numeric', 'mcc')
-OPERATOR_FIELDS = ('mcc', 'mnc', 'brand', 'operator')
+MNC_OPERATOR_FIELDS = ('mcc', 'mnc', 'brand', 'operator')
+SID_OPERATOR_FIELDS = (
+    'sid', 'high_sid', 'quantity', 'assignee', 'country', 'sid_state',
+    'expiry_date_filtered', 'conflict', 'conflicting_country',
+    'frequency', 'technology')
 
 Country = namedtuple('Country', COUNTRY_FIELDS)
-Operator = namedtuple('Operator', OPERATOR_FIELDS)
+MNCOperator = namedtuple('MNCOperator', MNC_OPERATOR_FIELDS)
+SIDOperator = namedtuple('SIDOperator', SID_OPERATOR_FIELDS)
 
 _CACHE = {}
 
@@ -33,8 +40,14 @@ def _countries():
     return _load_json('countries_json', COUNTRY_JSON_PATH, Country)
 
 
-def _operators():
-    return _load_json('operators_json', OPERATOR_JSON_PATH, Operator)
+def _mnc_operators():
+    return _load_json(
+        'mnc_operators_json', MNC_OPERATOR_JSON_PATH, MNCOperator)
+
+
+def _sid_operators():
+    return _load_json(
+        'sid_operators_json', SID_OPERATOR_JSON_PATH, SIDOperator)
 
 
 def _build_index(idx, records):
@@ -76,5 +89,7 @@ alpha2 = partial(_get, _countries, 'alpha2', _build_index, [1])
 alpha3 = partial(_get, _countries, 'alpha3', _build_index, [2])
 numeric = partial(_get, _countries, 'numeric', _build_index, [3])
 mcc = partial(_get, _countries, 'mcc', _build_index_tuple, 4)
-operators = partial(_get, _operators, 'operators', _build_list_index, 0)
-mcc_mnc = partial(_get, _operators, 'mcc_mnc', _build_index, [0, 1])
+operators = partial(_get, _mnc_operators, 'operators', _build_list_index, 0)
+sid_operators = partial(
+    _get, _sid_operators, 'sid_operators', _build_list_index, 0)
+mcc_mnc = partial(_get, _mnc_operators, 'mcc_mnc', _build_index, [0, 1])
