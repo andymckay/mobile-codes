@@ -17,7 +17,7 @@ MNC_OPERATOR_FIELDS = ('mcc', 'mnc', 'brand', 'operator')
 SID_OPERATOR_FIELDS = (
     'sid', 'high_sid', 'quantity', 'assignee', 'country', 'sid_state',
     'expiry_date_filtered', 'conflict', 'conflicting_country',
-    'frequency', 'technology')
+    'frequency', 'technology', 'mcc')
 
 Country = namedtuple('Country', COUNTRY_FIELDS)
 MNCOperator = namedtuple('MNCOperator', MNC_OPERATOR_FIELDS)

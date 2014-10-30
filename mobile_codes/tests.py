@@ -141,7 +141,11 @@ class TestSIDOperators(TestCase):
     def test_sid_operators(self):
         operators = mobile_codes.sid_operators(u'1')
         countries = set([operator.country for operator in operators])
-        self.assertEquals(countries, set(['United States of America']))
+        mccs = set()
+        for operator in operators:
+            mccs = mccs.union(set([mcc for mcc in operator.mcc]))
+        self.assertEquals(countries, set(['United States']))
+        self.assertEquals(mccs, set([u'313', u'311', u'310', u'316']))
 
     def test_sid_operators_fail(self):
         operators = mobile_codes.operators(u'000')
