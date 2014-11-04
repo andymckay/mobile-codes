@@ -5,7 +5,7 @@ long_description = (open('README.rst').read() + '\n' +
 
 setup(
     name='mobile-codes',
-    version='0.6',
+    version='0.7',
     description='Library of ISO 3166, MCC and MNC codes',
     long_description=long_description,
     author='Andy McKay',
