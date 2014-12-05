@@ -1,8 +1,16 @@
 language: python
 python:
- - "2.6"
- - "2.7"
- - "3.3"
- - "3.4"
+- '2.6'
+- '2.7'
+- '3.3'
+- '3.4'
 install: pip install -r requirements/tests.txt
 script: nosetests
+deploy:
+  provider: pypi
+  user: marketplacedevsinternal
+  password:
+    secure: XSJyqlkKL8fx1X1MZewnLCjlJDN4MI0OuXRV0E7qRgWZ+Gcch7m/OVYwbmYHAXHIb1rMW3mZ5QarAewxurXvuufSw6uDxmhNOXcVNw02BluNQ10Cw/xenNcm7li54GaBsdARSnEvHNAsJ76WT5sYhrEeh1QKZ13g/QSgb0+QfcA=
+  on:
+    all_branches: true
+    tags: true
