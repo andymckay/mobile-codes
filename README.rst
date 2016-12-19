@@ -1,3 +1,9 @@
+.. image:: http://unmaintained.tech/badge.svg
+    :target: http://unmaintained.tech/
+    :alt: No Maintenance Intended
+
+*I do not intend to maintain this anymore.*
+
 Contains the country codes from ISO 3166-1 based on the code based on:
 
 https://github.com/deactivated/python-iso3166/
